@@ -101,6 +101,7 @@ class BookingController extends Controller
     {
         //
         $booking->delete();
+        return redirect()->back();
     }
     public function showAll(Booking $booking)
     {

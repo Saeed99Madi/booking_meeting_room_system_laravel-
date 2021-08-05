@@ -26,6 +26,7 @@
         Interface
     </div>
     @if(auth()->user()->userHasRole('admin'))
+        <x-admin.media-link></x-admin.media-link>
         <x-admin.user-managment></x-admin.user-managment>
     @endif
 

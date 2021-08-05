@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AdminMediasController;
+use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoleController;
@@ -18,9 +20,16 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::resource('admin/media', AdminMediasController::class)->names([
+    'index'=>'admin.media.index',
+    'create'=>'admin.media.create',
+    'store'=>'admin.media.store',
+    'edit'=>'admin.media.edit'
+]);
+Route::delete('admin/delete/media', [AdminMediasController::class ,'deleteMedia' ]);
 
 Route::get('/calendar',[HomeController::class,'create']);
+Route::get('/agenda',[AgendaController::class,'index'])->name('agenda');
 
     Route::get('/',[HomeController::class,'index'])->name('home');
 Route::middleware(['auth'])->group(function(){
